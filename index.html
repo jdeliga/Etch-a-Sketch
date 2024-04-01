@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etch-a-sketch</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f5f5f5;
+    }
+    #container {
+        display: grid;
+        grid-template-columns: repeat(32, 1fr);
+        grid-template-rows: repeat(32, 1fr);
+        gap: 0px;
+        margin-top: 50px;
+    }
+    .pixel {
+        width: 50px;
+        height: 30px;
+        background-color: white;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+    <h1>Sketchpad</h1>
+    <button onclick="clearSketchpad()">Clear</button>
+    <div id="container">
+
+    </div>
+
+<script>
+    const container = document.getElementById('container');
+
+    for (let i = 0; i < 32; i++) {
+        for (let j = 0; j < 32; j++) {
+            const pixel = document.createElement('div');
+            pixel.classList.add('pixel');
+            pixel.addEventListener('mouseover', function() {
+                pixel.style.backgroundColor = 'black';
+            });
+            container.appendChild(pixel);
+        }
+    }
+
+    function clearSketchpad() {
+        const pixels = document.querySelectorAll('.pixel');
+        pixels.forEach(pixel => {
+            pixel.style.backgroundColor = 'white';
+        });
+    }
+</script>
+</body>
+</html>
